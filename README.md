@@ -1,6 +1,6 @@
 # ts-tooling Numbers
 
-some Javascript Extension Methods for Number Data Type
+some Javascript Extension Methods for Number Data Type.
 
 ### Install
 
