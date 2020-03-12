@@ -2,7 +2,7 @@ import '../src';
 import {Benchmark} from 'collatio';
 import {assert} from 'chai';
 
-const b = new Benchmark('Ceil');
+const b = new Benchmark('Round');
 b.setup(() => {}, 1000);
 
 function native(value: number, precision: number): number {
@@ -12,13 +12,13 @@ function native(value: number, precision: number): number {
     }
     const tmp = parseInt(offset, 10);
     return precision < 0 ?
-        Math.ceil(value / tmp) * tmp :
-        Math.ceil(value * tmp) / tmp;
+        Math.round(value / tmp) * tmp :
+        Math.round(value * tmp) / tmp;
 }
 
 export function run() {
     b.run('ts-tooling', () => {
-        assert.equal((2.4777).Ceil!(1), 2.5);
+        assert.equal((2.4777).Round!(1), 2.5);
     });
 
     b.run('Javascript', () => {
