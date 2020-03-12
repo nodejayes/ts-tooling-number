@@ -27,7 +27,9 @@ export default {
         typescript({
             useTsconfigDeclarationDir: true,
             tsconfigOverride: {
-                module: 'es2015'
+                compilerOptions: {
+                    module: 'es2015'
+                }
             }
         }),
         // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)

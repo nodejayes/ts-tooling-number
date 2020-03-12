@@ -6,7 +6,11 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "tsc && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
-    "test": "nyc --reporter=lcov --report-dir coverage mocha --register ts-node/register --timeout 5000 ./spec/**/*.spec.ts"
+    "test": "nyc --reporter=lcov --report-dir coverage mocha -r ts-node/register --timeout 5000 ./spec/**/*.spec.ts",
+    "benchmarks": "ts-node ./benchmarks/index.ts",
+    "beforecommit": "npm run build && npm run test && npm run benchmarks",
+    "release:beta": "npm run beforecommit && npm publish --tag beta",
+    "release": "npm run beforecommit && npm publish"
   },
   "dependencies": {},
   "devDependencies": {
